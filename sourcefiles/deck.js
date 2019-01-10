@@ -5,9 +5,14 @@ class Deck{
 		this.cards = [];
 		this.visible = startVisible;
 		this.domElement = null;
+		this.handleChildClick = this.handleChildClick.bind(this);
 	}
 	add( details ){
-		var newCard = new Card({ type: details.type, frontGraphic: details.frontImg });
+		var newCard = new Card({ 
+			type: details.type, 
+			frontGraphic: details.frontImg, 
+			parentClickHandler: this.handleChildClick 
+		});
 		this.cards.push(newCard);
 	}
 	draw( cardCount ){
@@ -33,6 +38,9 @@ class Deck{
 			cardDomElements.push( cardDom );
 		}
 		return cardDomElements;
+	}
+	handleChildClick( clickedChildCard ){
+		clickedChildCard.show();
 	}
 	render(){
 		this.domElement = $("<div>",{

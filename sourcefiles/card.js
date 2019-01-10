@@ -7,7 +7,8 @@ class Card{
 			frontGraphic: 'images/catattack.jpg',
 			backGraphic: 'images/back.png',
 			'class': 'catCard',
-			visible: false
+			visible: false,
+			parentClickHandler: function(){}
 		}
 		this.options = {};
 		for(var key in defaultOptions){
@@ -34,7 +35,7 @@ class Card{
 	}
 	handleClick(){
 		debugger;
-		console.log(this);
+		this.options.parentClickHandler( this );
 	}
 	render(){
 		if( this.options.visible){
