@@ -1,0 +1,40 @@
+/* main css */
+body{
+	margin: 0;
+}
+#gameArea{
+	height: 100vh;
+	width: 100vw;
+	background-color: lightgreen;
+	position: relative;
+}
+
+
+
+/* parts csss */
+.catCard{
+	height: 150px;
+	width: 100px;
+	position: relative;
+}
+.catCard > .front, .catCard > .back{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+.hidden > .back{
+	display: none;
+}
+
+.deck{
+	height: 150px;
+	width: 500px;
+	border: 1px solid lime;
+	background-color: lavender;
+	display: flex;
+}

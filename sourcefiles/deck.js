@@ -4,12 +4,10 @@ class Deck{
 	constructor(startVisible){
 		this.cards = [];
 		this.visible = startVisible;
+		this.domElement = null;
 	}
-	add( newCard ){
-		if(newCard.constructor !== Card){
-			console.error('can only add a Card object')
-			return false;
-		}
+	add( details ){
+		var newCard = new Card({ type: details.type, frontGraphic: details.frontImg });
 		this.cards.push(newCard);
 	}
 	draw( cardCount ){
@@ -28,7 +26,34 @@ class Deck{
 	hide(){
 		this.visible = false;
 	}
+	renderChildren(){
+		var cardDomElements = [];
+		for( var cardI = 0; cardI < this.cards.length; cardI++){
+			var cardDom = this.cards[cardI].render();
+			cardDomElements.push( cardDom );
+		}
+		return cardDomElements;
+	}
 	render(){
-		
+		this.domElement = $("<div>",{
+			'class': 'deck'
+		});
+		var childCards = this.renderChildren();
+		this.domElement.append(childCards);
+		return this.domElement;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
